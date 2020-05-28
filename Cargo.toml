@@ -4,9 +4,13 @@ version = "0.1.0"
 authors = ["qingcheng <leehualiang@gmail.com>"]
 edition="2018"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/elexing/pagination"
+description = "a pagination lib for web and database"
+repository = "https://github.com/elexing/pagination.git"
+documentation = "https://github.com/elexing/pagination"
+homepage = "https://github.com/elexing/pagination"
 categories = ["data-structures", "web-programming"]
 keywords = ["page", "pagination", "database"]
+readme = "README.md"
 
 [dependencies]
 cfg-if = "0.1"
