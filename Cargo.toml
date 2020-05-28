@@ -1,0 +1,28 @@
+[package]
+name = "pagination"
+version = "0.1.0"
+authors = ["qingcheng <leehualiang@gmail.com>"]
+edition="2018"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/elexing/pagination"
+categories = ["data-structures", "web-programming"]
+keywords = ["page", "pagination", "database"]
+
+[dependencies]
+cfg-if = "0.1"
+serde = {version = "^1.0", optional=true}
+serde_derive = {version = "^1.0", optional=true}
+
+[dev-dependencies]
+serde_json="^1.0"
+
+[features]
+default=["page-size-20"]
+with-serde =["serde", "serde_derive"]
+page-size-5 =[]
+page-size-10 =[]
+page-size-15 =[]
+page-size-20 =[]
+page-size-30 =[]
+page-size-40 =[]
+page-size-50 =[]
