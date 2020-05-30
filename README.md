@@ -4,6 +4,8 @@
 
 # Usage 
 
+To build pagable request param
+
 ``` rust
  use pagination::{
  	PageParams,
@@ -14,6 +16,18 @@
  let offset_param = page_param.into_offset();
  assert_eq!(offset_param.offset(), 80_u64);
  assert_eq!(offset_param.limit(), 20);
+```
+
+Wrap the database result
+
+``` rust
+
+use pagination::Page;
+
+let page = Page::new(vec!(10,20,30), 10);
+let f1 = page[0];
+assert_eq!(f1 , 10);
+
 ```
 
 # License
