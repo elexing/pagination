@@ -1,10 +1,12 @@
-# what
+# What
 
 `Pagination` is a page query lib for rust.
 
 # Usage 
 
-To build pagable request param
+## Build pageable request param
+
+### Only paginate params
 
 ``` rust
  use pagination::{
@@ -18,7 +20,32 @@ To build pagable request param
  assert_eq!(offset_param.limit(), 20);
 ```
 
-Wrap the database result
+### Support complex params
+
+``` rust
+use pagination::{
+ 	PageRequest,
+ 	OffsetRequest,
+ 	DefaultIntoOffset
+ };
+
+ struct UserQuery {
+    name : &'static str,
+    age : u8
+ }
+ let page_req = PageRequest::new(5, 20, UserQuery{name : "alex", "age" : 18});
+ let offset_req = page_req.into_offset();
+ assert_eq!(offset_param.offset(), 80_u64);
+ assert_eq!(offset_param.limit(), 20);
+```
+
+### Default page size
+  If the **page size** from user is `0` or greater than `max page size`, the `DEFAULT_PAGE_SIZE` will be the page size.
+The value of `DEFAULT_PAGE_SIZE` is `20`, and you can choose the value by the features, `page-size-5`,`page-size-10`,
+`page-size-15`, `page-size-20`, `page-size-30`,`page-size-40`, `page-size-50`.
+
+
+## Wrap the database result
 
 ``` rust
 
