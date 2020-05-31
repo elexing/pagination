@@ -6,7 +6,7 @@
 
 ## Build pageable request param
 
-### Only paginate params
+### Only pagination params
 
 ``` rust
  use pagination::{
