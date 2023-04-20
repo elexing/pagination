@@ -18,13 +18,13 @@ use crate::{Offsetable, Pageable, DEFAULT_MAX_PAGE_SIZE, DEFAULT_PAGE_SIZE};
 /// ```
 #[derive(Clone, Debug)]
 #[cfg_attr(feature = "with-serde", derive(Serialize, Deserialize))]
-pub struct PageRequest<T: Sized> {
+pub struct PageRequest<T: Sized = ()> {
     page_number: u32,
     page_size: u32,
     request: Option<T>,
 }
 
-pub struct OffsetRequest<T: Sized> {
+pub struct OffsetRequest<T: Sized =()> {
     offset: u64,
     limit: u32,
     request: Option<T>,
@@ -36,8 +36,8 @@ impl<T: Sized> PageRequest<T> {
     /// * page_size 每页的条数.
     /// * request 与分页查询无关的其他查询参数。
     pub fn new<E>(page_number: u32, page_size: u32, request: E) -> PageRequest<T>
-    where
-        E: Into<Option<T>>,
+        where
+            E: Into<Option<T>>,
     {
         PageRequest {
             page_number,
@@ -75,6 +75,11 @@ impl<T: Sized> Pageable for PageRequest<T> {
 }
 
 impl<T: Sized> OffsetRequest<T> {
+
+    pub fn new(offset : u64, limit : u32) -> Self{
+        Self{offset ,limit, request : None }
+    }
+
     pub fn offset(&self) -> u64 {
         self.offset
     }
